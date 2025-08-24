@@ -1100,3 +1100,4 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact mysql:mysql-c
 2025-08-24 16:49:47,081 [Worker-71: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2025-08-24 16:49:47,084 [Worker-71: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
 2025-08-24 16:49:47,086 [Worker-71: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\vijay\OneDrive\Desktop\3-1\todo\TODOSPRINGBOOT\src\test\resources
+2025-08-24 17:25:28,173 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
