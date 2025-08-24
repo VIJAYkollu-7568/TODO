@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios"; // ✅ Added axios
+import api from "../apiClient"; // ✅ use custom api client
 import "./TaskForm.css";
 
 function TaskForm() {
@@ -8,8 +8,6 @@ function TaskForm() {
   const [taskTime, setTaskTime] = useState("");
   const [editId, setEditId] = useState(null);
 
-  const API_URL = "http://localhost:2005/api/tasks"; // ✅ Backend URL
-
   // ✅ Fetch tasks on page load
   useEffect(() => {
     fetchTasks();
@@ -17,7 +15,7 @@ function TaskForm() {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get(API_URL);
+      const response = await api.get("/tasks"); // ✅ no full URL
       setTasks(response.data);
     } catch (error) {
       console.error("Error fetching tasks:", error);
@@ -31,11 +29,11 @@ function TaskForm() {
       return;
     }
     try {
-      const response = await axios.post(API_URL, {
+      const response = await api.post("/tasks", {
         text: taskInput,
         time: taskTime,
       });
-      setTasks([...tasks, response.data]); // add new task from backend
+      setTasks([...tasks, response.data]);
       setTaskInput("");
       setTaskTime("");
     } catch (error) {
@@ -43,14 +41,14 @@ function TaskForm() {
     }
   };
 
-  // ✅ Update existing task
+  // ✅ Update task
   const handleUpdate = async () => {
     if (!taskInput.trim() || !taskTime || editId === null) {
       alert("⚠️ Both Task and Time are required to update!");
       return;
     }
     try {
-      const response = await axios.put(`${API_URL}/${editId}`, {
+      const response = await api.put(`/tasks/${editId}`, {
         text: taskInput,
         time: taskTime,
       });
@@ -68,7 +66,7 @@ function TaskForm() {
   // ✅ Delete task
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${API_URL}/${id}`);
+      await api.delete(`/tasks/${id}`);
       setTasks(tasks.filter((task) => task.id !== id));
     } catch (error) {
       console.error("Error deleting task:", error);
@@ -104,8 +102,7 @@ function TaskForm() {
         <button onClick={handleAdd}>Add Task</button>
         <button onClick={handleUpdate}>Update Task</button>
         <button onClick={() => setTasks([])}>Clear Local</button>
-        <button onClick={fetchTasks}>Refresh List</button>{" "}
-        {/* ✅ fetch from backend */}
+        <button onClick={fetchTasks}>Refresh List</button>
       </div>
 
       <ul className="todo-list">
