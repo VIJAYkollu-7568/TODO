@@ -1,0 +1,96 @@
+/* Page background */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9; /* light gray background */
+}
+
+/* Main container */
+.todo-container {
+  background: #d9b2b2; /* white card */
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 60px 90px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Heading */
+.todo-container h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Input fields */
+.todo-container input[type="text"],
+.todo-container input[type="time"] {
+  padding: 10px;
+  margin: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 60%;
+  font-size: 14px;
+}
+
+/* Buttons */
+.todo-container button {
+  background-color: #4caf50; /* green */
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  margin: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.todo-container button:hover {
+  background-color: #45a049;
+}
+
+/* Task List */
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+/* Each Task Card */
+.todo-item {
+  background: #f9f9ff;
+  border-left: 6px solid #c20f0f;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.todo-item:hover {
+  background: #eef2ff;
+}
+
+/* Task text */
+.todo-item span {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Edit & Delete buttons inside tasks */
+.todo-item button {
+  background-color: #007bff; /* blue for edit */
+  margin-left: 8px;
+}
+
+.todo-item button:hover {
+  opacity: 0.9;
+}
+
+.todo-item button:last-child {
+  background-color: #e74c3c; /* red for delete */
+}
