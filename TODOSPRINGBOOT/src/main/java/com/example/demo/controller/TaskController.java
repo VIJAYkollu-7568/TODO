@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tasks")
-@CrossOrigin(origins = "http://localhost:2030") // ✅ allow React frontend
+@CrossOrigin(origins = "http://localhost:5173") // ✅ allow React frontend
 public class TaskController {
     private final TaskService taskService;
 
