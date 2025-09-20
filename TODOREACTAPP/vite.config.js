@@ -1,16 +1,7 @@
-// import { defineConfig } from 'vite'
-// import react from '@vitejs/plugin-react'
+const config = {
+  url:
+    import.meta.env.VITE_API_BASE ||
+    "http://localhost:8080/todospringboot/api/tasks", // ✅ ends with /tasks
+};
 
-// // https://vite.dev/config/
-// export default defineConfig({
-//   plugins: [react()],
-// })
-
-// vite.config.js
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-
-export default defineConfig({
-  plugins: [react()],
-  base: "/todofrontend/", // ✅ Match the Tomcat context
-});
+export default config;

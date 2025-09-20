@@ -1,6 +1,7 @@
-// src/components/config.js
 const config = {
-  url: import.meta.env.VITE_API_URL || "http://localhost:2030/api/tasks",
+  url:
+    import.meta.env.VITE_API_BASE ||
+    "http://localhost:8080/todospringboot/api/tasks",
 };
 
 export default config;
