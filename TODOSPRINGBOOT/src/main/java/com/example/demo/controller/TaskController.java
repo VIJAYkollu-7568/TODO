@@ -2,13 +2,14 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Task;
 import com.example.demo.service.TaskService;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
-@RequestMapping("/api/tasks")
-@CrossOrigin(origins = {"http://localhost:2030", "http://localhost:5173"})
+@RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class TaskController {
     private final TaskService taskService;
 
