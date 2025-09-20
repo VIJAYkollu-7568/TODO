@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./TaskManager.css";
-import config from "../config.js"; // updated path
+import config from "./config.js";
 
 const TaskManager = () => {
   const [tasks, setTasks] = useState([]);
@@ -15,7 +15,7 @@ const TaskManager = () => {
   const [message, setMessage] = useState("");
   const [editMode, setEditMode] = useState(false);
 
-  const baseUrl = config.url;
+  const baseUrl = config.url; // e.g., http://localhost:8080/api/tasks
 
   useEffect(() => {
     fetchAllTasks();
@@ -23,7 +23,7 @@ const TaskManager = () => {
 
   const fetchAllTasks = async () => {
     try {
-      const res = await axios.get(baseUrl);
+      const res = await axios.get(baseUrl); // GET /api/tasks
       setTasks(res.data);
     } catch (error) {
       setMessage("❌ Failed to fetch tasks.");
@@ -45,7 +45,7 @@ const TaskManager = () => {
   const addTask = async () => {
     if (!validateForm()) return;
     try {
-      await axios.post(baseUrl, { text: task.text, time: task.time });
+      await axios.post(baseUrl, { text: task.text, time: task.time }); // POST /api/tasks
       setMessage("✅ Task added successfully.");
       fetchAllTasks();
       resetForm();
@@ -60,7 +60,7 @@ const TaskManager = () => {
       await axios.put(`${baseUrl}/${task.id}`, {
         text: task.text,
         time: task.time,
-      });
+      }); // PUT /api/tasks/{id}
       setMessage("✅ Task updated successfully.");
       fetchAllTasks();
       resetForm();
@@ -71,7 +71,7 @@ const TaskManager = () => {
 
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`${baseUrl}/${id}`);
+      await axios.delete(`${baseUrl}/${id}`); // DELETE /api/tasks/{id}
       setMessage("✅ Task deleted.");
       fetchAllTasks();
     } catch (error) {
@@ -85,6 +85,7 @@ const TaskManager = () => {
       return;
     }
     try {
+      // Note: Your backend must support GET /api/tasks/{id} for this to work.
       const res = await axios.get(`${baseUrl}/${idToFetch}`);
       setFetchedTask(res.data);
       setMessage("");
