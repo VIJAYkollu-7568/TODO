@@ -12,5 +12,5 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/todofrontend/", // <-- add this line
+  base: "/todofrontend/", // ✅ Match the Tomcat context
 });

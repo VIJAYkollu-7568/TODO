@@ -1,12 +1,12 @@
-import "./App.css";
-import TaskForm from "./components/TaskForm";
+import React from "react";
+import TaskManager from "./components/TaskManager";
 
-function App() {
+const App = () => {
   return (
     <div>
-      <TaskForm />
+      <TaskManager />
     </div>
   );
-}
+};
 
 export default App;
