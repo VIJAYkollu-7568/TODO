@@ -15,7 +15,7 @@ const TaskManager = () => {
   const [message, setMessage] = useState("");
   const [editMode, setEditMode] = useState(false);
 
-  const baseUrl = config.url; // e.g., http://localhost:8080/api/tasks
+  const baseUrl = config.url;
 
   useEffect(() => {
     fetchAllTasks();
