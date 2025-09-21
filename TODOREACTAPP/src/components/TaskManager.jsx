@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./TaskManager.css";
+import "./style.css";
 import config from "./config.js";
 
 const TaskManager = () => {
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState({
-    id: "",
     text: "",
     time: "",
   });
-  const [idToFetch, setIdToFetch] = useState("");
-  const [fetchedTask, setFetchedTask] = useState(null);
   const [message, setMessage] = useState("");
   const [editMode, setEditMode] = useState(false);
+  const [editId, setEditId] = useState(null);
 
-  const baseUrl = config.url;
+  const baseUrl = `${config.url}/api/tasks`;
 
   useEffect(() => {
     fetchAllTasks();
@@ -23,7 +21,7 @@ const TaskManager = () => {
 
   const fetchAllTasks = async () => {
     try {
-      const res = await axios.get(baseUrl); // GET /api/tasks
+      const res = await axios.get(baseUrl);
       setTasks(res.data);
     } catch (error) {
       setMessage("❌ Failed to fetch tasks.");
@@ -36,7 +34,7 @@ const TaskManager = () => {
 
   const validateForm = () => {
     if (!task.text.trim() || !task.time.trim()) {
-      setMessage("⚠ Please fill out both Task and Time!");
+      setMessage("⚠️ Please fill out all fields.");
       return false;
     }
     return true;
@@ -45,7 +43,7 @@ const TaskManager = () => {
   const addTask = async () => {
     if (!validateForm()) return;
     try {
-      await axios.post(baseUrl, { text: task.text, time: task.time }); // POST /api/tasks
+      await axios.post(baseUrl, task);
       setMessage("✅ Task added successfully.");
       fetchAllTasks();
       resetForm();
@@ -55,12 +53,9 @@ const TaskManager = () => {
   };
 
   const updateTask = async () => {
-    if (!validateForm() || !task.id) return;
+    if (!validateForm()) return;
     try {
-      await axios.put(`${baseUrl}/${task.id}`, {
-        text: task.text,
-        time: task.time,
-      }); // PUT /api/tasks/{id}
+      await axios.put(`${baseUrl}/${editId}`, task);
       setMessage("✅ Task updated successfully.");
       fetchAllTasks();
       resetForm();
@@ -71,43 +66,35 @@ const TaskManager = () => {
 
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`${baseUrl}/${id}`); // DELETE /api/tasks/{id}
-      setMessage("✅ Task deleted.");
+      await axios.delete(`${baseUrl}/${id}`);
+      setMessage("🗑️ Task deleted.");
       fetchAllTasks();
     } catch (error) {
       setMessage("❌ Error deleting task.");
     }
   };
 
-  const getTaskById = async () => {
-    if (!idToFetch) {
-      setMessage("⚠ Please enter a task ID.");
-      return;
-    }
+  const deleteAllTasks = async () => {
     try {
-      // Note: Your backend must support GET /api/tasks/{id} for this to work.
-      const res = await axios.get(`${baseUrl}/${idToFetch}`);
-      setFetchedTask(res.data);
-      setMessage("");
+      await axios.delete(baseUrl);
+      setMessage("🗑️ All tasks deleted.");
+      fetchAllTasks();
     } catch (error) {
-      setFetchedTask(null);
-      setMessage("❌ Task not found.");
+      setMessage("❌ Error deleting all tasks.");
     }
   };
 
-  const handleEdit = (tsk) => {
-    setTask(tsk);
+  const handleEdit = (t) => {
+    setTask({ text: t.text, time: t.time });
     setEditMode(true);
-    setMessage(`✏ Editing task with ID ${tsk.id}`);
+    setEditId(t.id);
+    setMessage(`✏️ Editing task with ID ${t.id}`);
   };
 
   const resetForm = () => {
-    setTask({
-      id: "",
-      text: "",
-      time: "",
-    });
+    setTask({ text: "", time: "" });
     setEditMode(false);
+    setEditId(null);
   };
 
   return (
@@ -115,126 +102,94 @@ const TaskManager = () => {
       {message && (
         <div
           className={`message-banner ${
-            message.toLowerCase().includes("error") ||
-            message.toLowerCase().includes("failed")
-              ? "error"
-              : "success"
+            message.includes("❌") ? "error" : "success"
           }`}
         >
           {message}
         </div>
       )}
 
-      <h2>📝 Task Management</h2>
+      <h2>Task Manager</h2>
 
-      <div>
-        <h3>{editMode ? "Edit Task" : "Add Task"}</h3>
-        <div className="form-grid">
-          <input
-            type="number"
-            name="id"
-            placeholder="ID"
-            value={task.id}
-            onChange={handleChange}
-            disabled={!editMode}
-          />
-          <input
-            type="text"
-            name="text"
-            placeholder="Task"
-            value={task.text}
-            onChange={handleChange}
-          />
-          <input
-            type="time"
-            name="time"
-            value={task.time}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className="btn-group">
-          {!editMode ? (
-            <button className="btn-blue" onClick={addTask}>
-              Add Task
-            </button>
-          ) : (
-            <>
-              <button className="btn-green" onClick={updateTask}>
-                Update Task
-              </button>
-              <button className="btn-gray" onClick={resetForm}>
-                Cancel
-              </button>
-            </>
-          )}
-        </div>
-      </div>
-
-      <div>
-        <h3>🔍 Get Task By ID</h3>
+      <div className="form-grid">
         <input
-          type="number"
-          value={idToFetch}
-          onChange={(e) => setIdToFetch(e.target.value)}
-          placeholder="Enter Task ID"
+          type="text"
+          name="text"
+          placeholder="Task text"
+          value={task.text}
+          onChange={handleChange}
         />
-        <button className="btn-blue" onClick={getTaskById}>
-          Fetch
-        </button>
-
-        {fetchedTask && (
-          <div>
-            <h4>Task Found:</h4>
-            <pre>{JSON.stringify(fetchedTask, null, 2)}</pre>
-          </div>
-        )}
+        <input
+          type="text"
+          name="time"
+          placeholder="Task time"
+          value={task.time}
+          onChange={handleChange}
+        />
       </div>
 
-      <div>
-        <h3>📋 All Tasks</h3>
-        {tasks.length === 0 ? (
-          <p>No tasks found.</p>
+      <div className="btn-group">
+        {!editMode ? (
+          <button className="btn-blue" onClick={addTask}>
+            Add Task
+          </button>
         ) : (
-          <div className="table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  {Object.keys(task).map((key) => (
-                    <th key={key}>{key}</th>
-                  ))}
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {tasks.map((tsk) => (
-                  <tr key={tsk.id}>
-                    {Object.keys(task).map((key) => (
-                      <td key={key}>{tsk[key]}</td>
-                    ))}
-                    <td>
-                      <div className="action-buttons">
-                        <button
-                          className="btn-green"
-                          onClick={() => handleEdit(tsk)}
-                        >
-                          Edit
-                        </button>
-                        <button
-                          className="btn-red"
-                          onClick={() => deleteTask(tsk.id)}
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <>
+            <button className="btn-green" onClick={updateTask}>
+              Update Task
+            </button>
+            <button className="btn-gray" onClick={resetForm}>
+              Cancel
+            </button>
+          </>
         )}
+        <button className="btn-red" onClick={deleteAllTasks}>
+          Delete All
+        </button>
       </div>
+
+      <h3>All Tasks</h3>
+      {tasks.length === 0 ? (
+        <p>No tasks found.</p>
+      ) : (
+        <div className="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Text</th>
+                <th>Time</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tasks.map((t) => (
+                <tr key={t.id}>
+                  <td>{t.id}</td>
+                  <td>{t.text}</td>
+                  <td>{t.time}</td>
+                  <td>
+                    <div className="action-buttons">
+                      <button
+                        className="btn-green"
+                        onClick={() => handleEdit(t)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="btn-red"
+                        onClick={() => deleteTask(t.id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };
