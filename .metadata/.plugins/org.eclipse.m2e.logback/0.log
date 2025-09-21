@@ -1681,3 +1681,34 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact mysql:mysql-c
 2025-09-21 14:11:27,000 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2025-09-21 14:11:27,032 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
 2025-09-21 14:11:27,054 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\vijay\OneDrive\Desktop\3-1\todo\TODOSPRINGBOOT\src\test\resources
+2025-09-21 14:18:44,914 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2025-09-21 14:22:22,768 [Worker-25: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.example:TODOSPRINGBOOT:0.0.1-SNAPSHOT @ C:\Users\vijay\OneDrive\Desktop\3-1\todo\TODOSPRINGBOOT\pom.xml.
+2025-09-21 14:22:25,990 [Worker-25: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-21 14:22:26,021 [Worker-25: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-21 14:22:26,030 [Worker-25: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\vijay\OneDrive\Desktop\3-1\todo\TODOSPRINGBOOT\src\test\resources
+2025-09-21 14:22:33,559 [Worker-14: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2025-09-21 14:22:34,354 [Worker-14: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.example:TODOSPRINGBOOT:0.0.1-SNAPSHOT @ C:\Users\vijay\OneDrive\Desktop\3-1\todo\TODOSPRINGBOOT\pom.xml.
+2025-09-21 14:22:36,524 [Worker-14: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TODOSPRINGBOOT/src/main/java
+2025-09-21 14:22:36,528 [Worker-14: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /TODOSPRINGBOOT/src/main/resources
+2025-09-21 14:22:36,530 [Worker-14: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /TODOSPRINGBOOT/src/main/resources
+2025-09-21 14:22:36,532 [Worker-14: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TODOSPRINGBOOT/src/test/java
+2025-09-21 14:22:36,535 [Worker-14: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /TODOSPRINGBOOT/src/test/resources
+2025-09-21 14:22:37,707 [Worker-14: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed for 1 poms: local refresh takes 0.00 sec, refresh facades takes 2.00 sec, update config takes 1.00 sec 
+2025-09-21 14:22:38,820 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-21 14:22:38,869 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-21 14:22:38,883 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\vijay\OneDrive\Desktop\3-1\todo\TODOSPRINGBOOT\src\test\resources
+2025-09-21 14:25:25,194 [Worker-38: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.example:TODOSPRINGBOOT:0.0.1-SNAPSHOT @ C:\Users\vijay\OneDrive\Desktop\3-1\todo\TODOSPRINGBOOT\pom.xml.
+2025-09-21 14:25:25,755 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-21 14:25:25,757 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-21 14:25:25,762 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\vijay\OneDrive\Desktop\3-1\todo\TODOSPRINGBOOT\src\test\resources
+2025-09-21 14:25:36,236 [Worker-6: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2025-09-21 14:25:36,492 [Worker-6: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.example:TODOSPRINGBOOT:0.0.1-SNAPSHOT @ C:\Users\vijay\OneDrive\Desktop\3-1\todo\TODOSPRINGBOOT\pom.xml.
+2025-09-21 14:25:36,896 [Worker-6: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TODOSPRINGBOOT/src/main/java
+2025-09-21 14:25:36,896 [Worker-6: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /TODOSPRINGBOOT/src/main/resources
+2025-09-21 14:25:36,897 [Worker-6: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /TODOSPRINGBOOT/src/main/resources
+2025-09-21 14:25:36,897 [Worker-6: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TODOSPRINGBOOT/src/test/java
+2025-09-21 14:25:36,897 [Worker-6: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /TODOSPRINGBOOT/src/test/resources
+2025-09-21 14:25:37,093 [Worker-6: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed for 1 poms: local refresh takes 0.00 sec, refresh facades takes 0.00 sec, update config takes 0.00 sec 
+2025-09-21 14:25:37,386 [Worker-25: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-21 14:25:37,398 [Worker-25: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-21 14:25:37,402 [Worker-25: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\vijay\OneDrive\Desktop\3-1\todo\TODOSPRINGBOOT\src\test\resources
