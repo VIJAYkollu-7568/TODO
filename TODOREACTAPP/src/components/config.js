@@ -1,6 +1,6 @@
 const config = {
   url:
-    import.meta.env.VITE_API_BASE || "http://localhost:8080/todospringboot/api",
+    import.meta.env.VITE_API_BASE || "http://localhost:2030/todospringboot/api",
 };
 
 export default config;
