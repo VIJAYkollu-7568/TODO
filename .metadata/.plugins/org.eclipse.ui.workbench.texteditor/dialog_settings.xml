@@ -3,8 +3,8 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="false"/>
 	<list key="searchhistory">
-		<item value="jar"/>
 		<item value="war"/>
+		<item value="jar"/>
 		<item value="mysql"/>
 	</list>
 </section>
