@@ -7,8 +7,6 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 dir('TODOREACTAPP') {
-                    // API Base matches backend context path
-                    bat 'echo VITE_API_BASE=http://localhost:8080/todospringboot/api> .env.production'
                     bat 'npm install'
                     bat 'npm run build'
                 }
